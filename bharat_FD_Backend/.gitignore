@@ -9,6 +9,6 @@ __pycache__/
 
 .env
 *.sqlite3
-
+*.json
 
 .DS_Store

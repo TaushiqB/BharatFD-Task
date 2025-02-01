@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django_redis",
+    "rest_framework",
     'faqs',  
     'ckeditor',  
 ]
@@ -134,3 +136,23 @@ CKEDITOR_CONFIGS = {
     },
 }
 
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
+LANGUAGE_CODE = 'en'
+USE_I18N = True
+USE_L10N = True
+LANGUAGES = [
+    ('en', 'English'),
+    ('hi', 'Hindi'),
+    ('bn', 'Bengali'),
+    ('fr', 'French'),
+    ('es', 'Spanish'),
+]
