@@ -3,21 +3,12 @@ myenv/
 venv/
 
 
-__pycache__/
 *.pyc
-*.pyo
+__pycache__/
 
 
 .env
-.venv
+*.sqlite3
 
 
-.vscode/
-.idea/
-
-
-/static/
-/media/
-
-
-db.sqlite3
+.DS_Store
