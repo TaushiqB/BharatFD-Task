@@ -4,6 +4,8 @@ from rest_framework.response import Response
 from django.core.cache import cache
 from .models import FAQ
 from .serializers import FAQSerializer
+from django_ratelimit.decorators import ratelimit
+from django.http import JsonResponse
 
 class FAQViewSet(viewsets.ModelViewSet):
     queryset = FAQ.objects.all()
@@ -29,3 +31,7 @@ class FAQViewSet(viewsets.ModelViewSet):
         cache.set(cache_key, serializer.data, timeout=86400)  # Cache for 24 hours
         
         return Response(serializer.data)
+    
+@ratelimit(key='ip', rate='100.minute', method='GET', block=True)
+def get_faqs(request):
+    return JsonResponse({"message": "Success"})
